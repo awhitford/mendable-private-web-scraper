@@ -9,7 +9,7 @@
     "scrape": "node dist/index.js"
   },
   "bin": {
-    "mendable-private-web-scraper": "./index.js"
+    "mendable-private-web-scraper": "./dist/index.js"
   },
   "keywords": [
     "mendable",
