@@ -1,5 +1,5 @@
-import { program, Option } from 'commander'
-import { config } from 'dotenv'
+import { program, Option } from "commander"
+import { config } from "dotenv"
 import { createDataConnector } from "@mendable/data-connectors"
 
 let verboseLogging = false
@@ -11,13 +11,15 @@ function verboseLog(message?: any, ...optionalParams: any[]) {
 }
 
 program
-  .name('mendable-private-web-scraper')
-  .summary('Scrape a website and upload the content to Mendable.')
-  .description('CLI to scrape a website and upload the content to Mendable.')
-  .usage('<url...>')
-  .argument('<url...>', "URL(s) of the website(s) to scrape")
-  .addOption(new Option('--api_key <api_key>', "Mendable Server API Key for uploading sources").env('MENDABLE_SERVER_API_KEY'))
-  .option('--verbose', "Enable verbose logging", false)
+  .name("mendable-private-web-scraper")
+  .summary("Scrape a website and upload the content to Mendable.")
+  .description("CLI to scrape a website and upload the content to Mendable.")
+  .usage("<url...>")
+  .argument("<url...>", "URL(s) of the website(s) to scrape")
+  .addOption(
+    new Option("--api_key <api_key>", "Mendable Server API Key for uploading sources").env("MENDABLE_SERVER_API_KEY"),
+  )
+  .option("--verbose", "Enable verbose logging", false)
   .showHelpAfterError()
   .parse()
 
@@ -26,14 +28,16 @@ verboseLogging = options.verbose
 
 config({
   debug: verboseLogging,
-  path: ['.env.local', '.env'],
+  path: [".env.local", ".env"],
 })
 
-const mendable_server_api_key = options.api_key ?? process.env.MENDABLE_SERVER_API_KEY;
+const mendable_server_api_key = options.api_key ?? process.env.MENDABLE_SERVER_API_KEY
 if (!mendable_server_api_key) {
-  console.error('Missing Mendable Server Key');
-  console.error(' - Either pass it as an argument --api_key or set it in the environment variable MENDABLE_SERVER_API_KEY');
-  process.exit(1);
+  console.error("Missing Mendable Server Key")
+  console.error(
+    " - Either pass it as an argument --api_key or set it in the environment variable MENDABLE_SERVER_API_KEY",
+  )
+  process.exit(1)
 }
 
 const webDataConnector = createDataConnector({
@@ -52,15 +56,15 @@ const mendableDocuments = documents.map((doc) => {
   return {
     content: doc.content,
     source: doc.metadata.sourceURL,
-    metadata: doc.metadata
+    metadata: doc.metadata,
   }
 })
 
 verboseLog("Sending documents to Mendable...")
-const response = await fetch('https://api.mendable.ai/v1/ingestDocuments', {
-  method: 'POST',
+const response = await fetch("https://api.mendable.ai/v1/ingestDocuments", {
+  method: "POST",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   body: JSON.stringify({
     api_key: mendable_server_api_key,
