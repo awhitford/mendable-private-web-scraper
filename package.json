@@ -23,7 +23,7 @@
     "@tsconfig/node-lts": "^20.1.3",
     "@types/node": "^20.12.4",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.4"
   },
   "dependencies": {
     "@mendable/data-connectors": "^0.0.48",
