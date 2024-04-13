@@ -11,6 +11,17 @@ I was inspired to build this to upload a private [Docusaurus](https://docusaurus
 
 ## Usage
 
+Configure your environment:  `.env` (or `.env.local`)
+```
+MENDABLE_SERVER_API_KEY=9ba...3be
+OPENAI_API_KEY=sk-uT4...Pui
+```
+
+* Note that you may also need to add a bogus `NANGO_SECRET_KEY` value (because of a [bug](https://github.com/mendableai/data-connectors/issues/24)) like:
+  ```
+  NANGO_SECRET_KEY=IGNORE
+  ```
+
 Build the utility:  `pnpm build`
 
 See the usage:  `pnpm scrape`
