@@ -14,18 +14,15 @@ I was inspired to build this to upload a private [Docusaurus](https://docusaurus
 Configure your environment:  `.env` (or `.env.local`)
 ```
 MENDABLE_SERVER_API_KEY=9ba...3be
+OPENAI_API_KEY=sk-uT4...Pui
+NANGO_SECRET_KEY=IGNORE
 ```
-(Alternatively, the `MENDABLE_SERVER_API_KEY` value may be passed as a command-line argument.)
-
-`OPENAI_API_KEY` must be specified, but putting it in the environment file does not work, so:
-```
-export OPENAI_API_KEY=sk-uT4...Pui
-```
-
-Note that you may also need to add a bogus `NANGO_SECRET_KEY` value (because of a [bug](https://github.com/mendableai/data-connectors/issues/24)) like:
-```
-export NANGO_SECRET_KEY=IGNORE
-```
+* The `MENDABLE_SERVER_API_KEY` value may alternatively be passed as a command-line argument (`--api-key`)
+* Environment variables may alternatively be configured using the command-line, like:
+  ```
+  export OPENAI_API_KEY=sk-uT4...Pui
+  ```
+* The `NANGO_SECRET_KEY` is not used, but technically a value is required by a dependent library (because of a [bug](https://github.com/mendableai/data-connectors/issues/24)) so specifying a bogus value (`IGNORE`) is a workaround
 
 ## Usage
 
