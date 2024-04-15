@@ -1,6 +1,5 @@
 import { program, Option } from "commander"
 import { config } from "dotenv"
-import { createDataConnector } from "@mendable/data-connectors"
 
 let verboseLogging = false
 
@@ -39,6 +38,12 @@ if (!mendable_server_api_key) {
   )
   process.exit(1)
 }
+
+// Lazy load this import:
+//   import { createDataConnector } from "@mendable/data-connectors"
+// because environment variables need to be set before initializing the module.
+const mendableDataConnectorsModule = await import("@mendable/data-connectors")
+const createDataConnector = mendableDataConnectorsModule.createDataConnector
 
 const webDataConnector = createDataConnector({
   provider: "web-scraper",
