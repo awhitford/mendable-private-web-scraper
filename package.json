@@ -1,6 +1,6 @@
 {
   "name": "mendable-private-web-scraper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This command webscrapes given urls, then ingests the raw content into Mendable. It is designed for web scraping private sites.",
   "type": "module",
   "main": "dist/index.js",
@@ -18,15 +18,15 @@
   ],
   "author": "Anthony Whitford <anthony@whitford.com> (https://anthonywhitford.com)",
   "license": "ISC",
-  "packageManager": "pnpm@9.0.4+sha512.c374b52de3de88c58fd8333df664a737279cdb0e1344ba4054d3b1fffa9a1a3670854f755dca4f16adea3f14be9896a7fcaf167409fe0c1ad60475271dafe81a",
+  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195",
   "devDependencies": {
     "@tsconfig/node-lts": "^20.1.3",
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.12.12",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@mendable/data-connectors": "^0.0.48",
+    "@mendable/data-connectors": "^0.0.50",
     "commander": "^12.0.0",
     "dotenv": "^16.4.5"
   },
